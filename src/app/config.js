@@ -10,6 +10,7 @@ define(function( require ) {
 	config[ "themes" ] = require( "json!root/config/themes" );
 	config[ "langs" ] = require( "json!root/config/langs" );
 	config[ "livestreamer" ] = require( "json!root/config/livestreamer" );
+	config[ "players" ] = require( "json!root/config/players" );
 	config[ "twitch" ] = require( "json!root/config/twitch" );
 	config[ "notification" ] = require( "json!root/config/notification" );
 	config[ "chat" ] = require( "json!root/config/chat" );

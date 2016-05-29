@@ -31,5 +31,17 @@ module.exports = {
 		tasks: [
 			"fpm:deb64"
 		]
+	},
+
+	rpm32: {
+		tasks: [
+			"fpm:rpm32"
+		]
+	},
+
+	rpm64: {
+		tasks: [
+			"fpm:rpm64"
+		]
 	}
 };

@@ -19,5 +19,17 @@ module.exports = {
 			"template:chocolatey",
 			"shell:chocolatey"
 		]
+	},
+
+	deb32: {
+		tasks: [
+			"fpm:deb32"
+		]
+	},
+
+	deb64: {
+		tasks: [
+			"fpm:deb64"
+		]
 	}
 };

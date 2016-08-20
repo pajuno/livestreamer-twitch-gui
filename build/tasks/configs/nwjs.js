@@ -8,6 +8,7 @@ module.exports = {
 		winIco  : "build/resources/icons/icon-16-32-48-256.ico",
 		macIcns : "build/resources/icons/icon-1024.icns",
 		macPlist: {
+			CFBundleIdentifier : "<%= grunt.config('main.app-identifier') %>",
 			CFBundleName       : "<%= grunt.config('main.display-name') %>",
 			CFBundleDisplayName: "<%= grunt.config('main.display-name') %>",
 			LSEnvironment      : {

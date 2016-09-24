@@ -13,5 +13,7 @@ module.exports = {
 	release_osx64     : [ "build/releases/<%= package.name %>/osx64/**" ],
 	release_linux32   : [ "build/releases/<%= package.name %>/linux32/**" ],
 	release_linux64   : [ "build/releases/<%= package.name %>/linux64/**" ],
-	package_chocolatey: [ "build/package/chocolatey/**" ]
+	package_chocolatey    : [ "build/package/chocolatey/**" ],
+	package_win32installer: [ "build/package/win32installer/**" ],
+	package_win64installer: [ "build/package/win64installer/**" ]
 };

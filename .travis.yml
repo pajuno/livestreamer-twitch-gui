@@ -7,6 +7,13 @@ git:
   # running "git fetch --unshallow" in before_install is also an option
   depth: 9999999
 
+addons:
+  apt:
+    packages:
+      - nsis
+      - devscripts
+      - rpm
+
 node_js:
   - "6"
 
@@ -36,9 +43,10 @@ before_deploy:
   - "sudo dpkg --add-architecture i386"
   - "sudo apt-get update -qq"
   - "sudo apt-get install -y wine > /dev/null"
+  # fpm
+  - "sudo gem install -q fpm"
   # compile the application and package it
-  # do everything the "dist" grunt task does, but don't build twice
-  - "grunt clean:dist compile:all compress checksum:all"
+  - "grunt clean:dist dist:all"
 
 deploy:
   - provider: releases

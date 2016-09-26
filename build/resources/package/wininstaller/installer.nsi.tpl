@@ -6,10 +6,6 @@
 !define ReleaseNotes "${Homepage}/releases/v${ReleaseVersion}"
 !define Arch "<%= arch %>"
 
-!define DirRoot "../../.."
-!define DirApp "${DirRoot}/build/releases/${AppName}/${Arch}"
-!define DirOutput "${DirRoot}/<%= diroutput %>"
-
 !define AppDir "${DisplayName}"
 !define AppFile "${AppName}.exe"
 !define InstallerFile "<%= filename %>"
@@ -44,7 +40,7 @@ SetCompressor /SOLID lzma
 
 
 # NSIS Installer output dir
-OutFile "${DirOutput}/${InstallerFile}"
+OutFile "<%= diroutput %>/${InstallerFile}"
 
 
 # Metadata params
@@ -57,7 +53,7 @@ VIAddVersionKey "LegalCopyright" "${Author}"
 
 
 # GUI
-!define MUI_ICON "${DirRoot}/build/resources/icons/icon-16-32-48-256.ico"
+!define MUI_ICON "<%= dirroot %>/build/resources/icons/icon-16-32-48-256.ico"
 !define MUI_WELCOMEPAGE_TITLE "${DisplayName} - v${ReleaseVersion}"
 !define MUI_WELCOMEPAGE_TITLE_3LINES
 !define MUI_ABORTWARNING
@@ -67,7 +63,7 @@ VIAddVersionKey "LegalCopyright" "${Author}"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\${AppFile}"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !define MUI_FINISHPAGE_SHOWREADME "${ReleaseNotes}"
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "Open release notes in webbrowser"
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "Open release notes in web browser"
 !define MUI_UNICON "${NSISDIR}/Contrib/Graphics/Icons/modern-uninstall.ico"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 !insertmacro MUI_PAGE_WELCOME
@@ -88,7 +84,7 @@ Section
 
 	RMDir /r $INSTDIR
 	SetOutPath $INSTDIR
-	File /r "${DirApp}\*"
+	File /r "<%= dirinput %>\*"
 
 	WriteUninstaller "$INSTDIR\${UninstallerFile}"
 

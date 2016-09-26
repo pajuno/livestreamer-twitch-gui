@@ -22,9 +22,6 @@ var pImages = r( pRoot, "img" );
 var pTemplates = r( pRoot, "templates" );
 var pModulesBower = r( ".", "bower_components" );
 var pModulesNpm = r( ".", "node_modules" );
-var pBuildDev = r( ".", "build", "tmp", "dev" );
-var pBuildProd = r( ".", "build", "tmp", "prod" );
-var pBuildTest = r( ".", "build", "tmp", "test" );
 
 
 // exclude modules/files from the js bundle
@@ -200,7 +197,7 @@ module.exports = {
 
 	dev: {
 		output: {
-			path: pBuildDev
+			path: "<%= dir.tmp_dev %>"
 		},
 
 		resolve: {
@@ -222,7 +219,7 @@ module.exports = {
 			}),
 
 			new NwjsPlugin({
-				files: r( pBuildDev, "**" ),
+				files: "<%= dir.tmp_dev %>/**",
 				argv: "--remote-debugging-port=8888",
 				rerunOnExit: true,
 				log: true,
@@ -239,7 +236,7 @@ module.exports = {
 
 	prod: {
 		output: {
-			path: pBuildProd
+			path: "<%= dir.tmp_prod %>"
 		},
 
 		resolve: {
@@ -295,7 +292,7 @@ module.exports = {
 
 			// add license banner
 			new webpack.BannerPlugin([
-				"<%= grunt.config('main.display-name') %>",
+				"<%= main['display-name'] %>",
 				"@version v<%= package.version %>",
 				"@date <%= grunt.template.today('yyyy-mm-dd') %>",
 				"@copyright <%= package.author %>"
@@ -317,7 +314,7 @@ module.exports = {
 
 	test: {
 		output: {
-			path: pBuildTest
+			path: "<%= dir.tmp_test %>"
 		},
 
 		resolve: {

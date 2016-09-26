@@ -26,9 +26,9 @@ module.exports = {
 		options: {
 			t: "deb",
 			a: "i386",
-			C: "<%= nwjs.options.buildDir %>/<%= package.name %>/linux32",
+			C: "<%= dir.releases %>/<%= package.name %>/linux32",
 			p: [
-				"dist/",
+				"<%= dir.dist %>/",
 				"<%= package.name %>",
 				"_<%= package.version %>",
 				"-<%= fpm.options.iteration %>",
@@ -46,14 +46,14 @@ module.exports = {
 				"prefix": "<%= fpm.options.prefix %>",
 				"exec": "<%= package.name %>"
 			},
-			"after-install": "build/resources/package/deb/postinst",
-			"before-remove": "build/resources/package/deb/prerm",
-			"after-remove": "build/resources/package/deb/postrm",
+			"after-install": "<%= dir.resources %>/package/deb/postinst",
+			"before-remove": "<%= dir.resources %>/package/deb/prerm",
+			"after-remove": "<%= dir.resources %>/package/deb/postrm",
 
 			/*
 			// does not work: lintian is complaining. may be a bug in fpm v1.6.0
 			"deb-meta-file": [
-				"build/resources/package/deb/copyright"
+				"<%= dir.resources %>/package/deb/copyright"
 			],
 			*/
 
@@ -66,9 +66,9 @@ module.exports = {
 		options: {
 			t: "deb",
 			a: "amd64",
-			C: "<%= nwjs.options.buildDir %>/<%= package.name %>/linux64",
+			C: "<%= dir.releases %>/<%= package.name %>/linux64",
 			p: [
-				"dist/",
+				"<%= dir.dist %>/",
 				"<%= package.name %>",
 				"_<%= package.version %>",
 				"-<%= fpm.options.iteration %>",
@@ -86,14 +86,14 @@ module.exports = {
 				"prefix": "<%= fpm.options.prefix %>",
 				"exec": "<%= package.name %>"
 			},
-			"after-install": "build/resources/package/deb/postinst",
-			"before-remove": "build/resources/package/deb/prerm",
-			"after-remove": "build/resources/package/deb/postrm",
+			"after-install": "<%= dir.resources %>/package/deb/postinst",
+			"before-remove": "<%= dir.resources %>/package/deb/prerm",
+			"after-remove": "<%= dir.resources %>/package/deb/postrm",
 
 			/*
 			// does not work: lintian is complaining. may be a bug in fpm v1.6.0
 			"deb-meta-file": [
-				"build/resources/package/deb/copyright"
+				"<%= dir.resources %>/package/deb/copyright"
 			],
 			*/
 
@@ -106,9 +106,9 @@ module.exports = {
 		options: {
 			t: "rpm",
 			a: "i386",
-			C: "<%= nwjs.options.buildDir %>/<%= package.name %>/linux32",
+			C: "<%= dir.releases %>/<%= package.name %>/linux32",
 			p: [
-				"dist/",
+				"<%= dir.dist %>/",
 				"<%= package.name %>",
 				"-<%= package.version %>",
 				"-<%= fpm.options.iteration %>",
@@ -126,8 +126,8 @@ module.exports = {
 				"prefix": "<%= fpm.options.prefix %>",
 				"exec": "<%= package.name %>"
 			},
-			"after-install": "build/resources/package/rpm/postinst",
-			"before-remove": "build/resources/package/rpm/prerm",
+			"after-install": "<%= dir.resources %>/package/rpm/postinst",
+			"before-remove": "<%= dir.resources %>/package/rpm/prerm",
 
 			"rpm-compression": "xz"
 		}
@@ -137,9 +137,9 @@ module.exports = {
 		options: {
 			t: "rpm",
 			a: "x86_64",
-			C: "<%= nwjs.options.buildDir %>/<%= package.name %>/linux64",
+			C: "<%= dir.releases %>/<%= package.name %>/linux64",
 			p: [
-				"dist/",
+				"<%= dir.dist %>/",
 				"<%= package.name %>",
 				"-<%= package.version %>",
 				"-<%= fpm.options.iteration %>",
@@ -157,8 +157,8 @@ module.exports = {
 				"prefix": "<%= fpm.options.prefix %>",
 				"exec": "<%= package.name %>"
 			},
-			"after-install": "build/resources/package/rpm/postinst",
-			"before-remove": "build/resources/package/rpm/prerm",
+			"after-install": "<%= dir.resources %>/package/rpm/postinst",
+			"before-remove": "<%= dir.resources %>/package/rpm/prerm",
 
 			"rpm-compression": "xz"
 		}
